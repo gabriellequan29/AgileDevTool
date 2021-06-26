@@ -12,6 +12,7 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    // create a new project
     public Project saveOrUpdateProject(Project project){
         try{
         project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
@@ -21,6 +22,7 @@ public class ProjectService {
         }
     }
 
+    // find a project by identifier
     public Project findProjectByIdentifier(String projectId){
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
@@ -29,6 +31,11 @@ public class ProjectService {
         }
 
         return project;
+    }
+
+    // find all projects
+    public Iterable<Project> findAllProjects(){
+        return projectRepository.findAll();
     }
 
 }
