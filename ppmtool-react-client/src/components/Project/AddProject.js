@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProject } from "../../actions/projectAction";
 
 class AddProject extends Component {
     constructor(){
@@ -30,42 +33,42 @@ class AddProject extends Component {
             end_date: this.state.end_date
         };
 
-        console.log(newProject);
+        this.props.createProject(newProject, this.props.history);
     }
 
     render() {
         return (
             <div>
-              <div class="project">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-md-8 m-auto">
-                              <h5 class="display-4 text-center">Create Project form</h5>
+              <div className="project">
+                  <div className="container">
+                      <div className="row">
+                          <div className="col-md-8 m-auto">
+                              <h5 className="display-4 text-center">Create Project form</h5>
                                 <hr />
                                 <form onSubmit={this.onSubmit}>
-                                  <div class="form-group">
+                                  <div className="form-group">
                                     <input 
                                         type="text" 
-                                        class="form-control form-control-lg " 
+                                        className="form-control form-control-lg " 
                                         placeholder="Project Name" 
                                         name="projectName"
                                         value={this.state.projectName}
                                         onChange={this.onChange}
                                     />
                                   </div>
-                                  <div class="form-group">
+                                  <div className="form-group">
                                     <input 
                                         type="text" 
-                                        class="form-control form-control-lg" 
+                                        className="form-control form-control-lg" 
                                         placeholder="Unique Project ID"
                                         name="projectIdentifier"
                                         value={this.state.projectIdentifier}
                                         onChange={this.onChange}
                                     />
                                   </div>
-                                  <div class="form-group">
+                                  <div className="form-group">
                                      <textarea 
-                                        class="form-control form-control-lg" 
+                                        className="form-control form-control-lg" 
                                         placeholder="Project Description"
                                         name="description"
                                         value={this.state.description}
@@ -73,20 +76,20 @@ class AddProject extends Component {
                                     />
                                   </div>
                                   <h6>Start Date</h6>
-                                  <div class="form-group">
+                                  <div className="form-group">
                                     <input 
                                         type="date" 
-                                        class="form-control form-control-lg" 
+                                        className="form-control form-control-lg" 
                                         name="start_date"
                                         value={this.state.start_date}
                                         onChange={this.onChange}
                                     />
                                   </div>
                                   <h6>Estimated End Date</h6>
-                                  <div class="form-group">
+                                  <div className="form-group">
                                     <input 
                                         type="date" 
-                                        class="form-control form-control-lg" 
+                                        className="form-control form-control-lg" 
                                         name="end_date" 
                                         value={this.state.end_date}
                                         onChange={this.onChange} 
@@ -94,7 +97,7 @@ class AddProject extends Component {
                                   </div>
                                     <input 
                                         type="submit" 
-                                        class="btn btn-primary btn-block mt-4" 
+                                        className="btn btn-primary btn-block mt-4" 
                                     />
                                 </form>
                           </div>
@@ -106,4 +109,11 @@ class AddProject extends Component {
     }
 }
 
-export default AddProject
+AddProject.propTypes = {
+    createProject: PropTypes.func.isRequired
+}
+
+export default connect(
+    null,
+    { createProject }
+)(AddProject);
