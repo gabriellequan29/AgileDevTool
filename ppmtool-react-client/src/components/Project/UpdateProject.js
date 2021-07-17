@@ -118,6 +118,7 @@ class UpdateProject extends Component {
                                         onChange={this.onChange}
                                         disabled />
                                 </div>
+                                <p></p>
                                 <div className="form-group">
                                     <textarea 
                                         className={classnames("form-control form-control-lg", {
@@ -129,8 +130,11 @@ class UpdateProject extends Component {
                                         onChange={this.onChange}
                                     />
                                     {errors.description && (
-                                        <div className="invalid-feedback">{errors.description}</div>
+                                        <div className="invalid-feedback">
+                                            {errors.description}
+                                        </div>
                                     )}  
+                                    <p></p>
                                 </div>
                                 <h6>Start Date</h6>
                                 <div className="form-group">
@@ -141,6 +145,7 @@ class UpdateProject extends Component {
                                         value={this.state.start_date}
                                         onChange={this.onChange} />
                                 </div>
+                                <p></p>
                                 <h6>Estimated End Date</h6>
                                 <div className="form-group">
                                     <input 
@@ -151,6 +156,7 @@ class UpdateProject extends Component {
                                         onChange={this.onChange}
                                         />
                                 </div>
+                                <p></p>
         
                                 <input 
                                     type="submit" 
