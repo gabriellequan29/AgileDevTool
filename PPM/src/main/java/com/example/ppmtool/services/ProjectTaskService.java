@@ -22,6 +22,7 @@ public class ProjectTaskService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    // create new project task
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
 
         try {
@@ -49,6 +50,7 @@ public class ProjectTaskService {
         }
     }
 
+    // get all project tasks in backlog
     public Iterable<ProjectTask> findBacklogById(String id){
         Project project =projectRepository.findByProjectIdentifier(id);
 
@@ -57,5 +59,25 @@ public class ProjectTaskService {
         }
 
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+    }
+
+    // get project task by project sequence
+    public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id) {
+        //make sure we are searching on the right backlog
+        Backlog backlog = backlogRepository.findByProjectIdentifier(backlog_id);
+        if(backlog == null){
+            throw new ProjectNotFoundException("Project with ID: '" + backlog_id + "' does not exist");
+        }
+
+        //make sure that our task exists
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+        if(projectTask == null) {
+            throw new ProjectNotFoundException("Project Task with ID: '" + pt_id + "' does not exist");
+        }
+
+        if(!projectTask.getProjectIdentifier().equals(backlog_id)) {
+            throw new ProjectNotFoundException("Project Task '" + pt_id + "' does not exist in project: '" + backlog_id);
+        }
+        return projectTask;
     }
 }
