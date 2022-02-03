@@ -43,6 +43,11 @@ public class ProjectTaskService {
             if (projectTask.getStatus() == "" || projectTask.getStatus() == null) {
                 projectTask.setStatus("TO_DO");
             }
+
+            if(projectTask.getPriority()==null||projectTask.getPriority()==0) {
+                projectTask.setPriority(3);
+            }
+
             return projectTaskRepository.save(projectTask);
 
         }catch(Exception e) {
@@ -52,7 +57,7 @@ public class ProjectTaskService {
 
     // get all project tasks in backlog
     public Iterable<ProjectTask> findBacklogById(String id){
-        Project project =projectRepository.findByProjectIdentifier(id);
+        Project project = projectRepository.findByProjectIdentifier(id);
 
         if(project==null){
             throw new ProjectNotFoundException("Project with ID: '" + id + "' does not exist");
