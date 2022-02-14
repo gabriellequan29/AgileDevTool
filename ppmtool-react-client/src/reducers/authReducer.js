@@ -18,7 +18,7 @@ export default function (state = initialstate, action) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        validToken: booleanActionPayload(action.payload),
+        isValidToken: booleanActionPayload(action.payload),
         user: action.payload,
       };
     default:

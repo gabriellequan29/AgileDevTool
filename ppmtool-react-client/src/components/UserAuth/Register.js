@@ -41,6 +41,12 @@ class Register extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.auth.isValidToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     const { errors } = this.state;
     return (
@@ -131,10 +137,12 @@ class Register extends Component {
 Register.propTypes = {
   createNewUser: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   errors: state.errors,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { createUser })(Register);
