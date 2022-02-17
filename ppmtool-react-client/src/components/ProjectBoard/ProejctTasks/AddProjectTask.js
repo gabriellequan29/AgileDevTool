@@ -60,13 +60,13 @@ class AddProjectTask extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to={`/projectBoard/${id}`} className="btn btn-light">
+              <Link to={`/projectBoard/${id}`} className="btn btn-secondary">
                 Back to Project Board
               </Link>
-              <h4 className="display-4 text-center">Add /Update Project Task</h4>
-              <p className="lead text-center">Project Name + Project Code</p>
+              <h4 className="display-4 text-center">Create Project Task</h4>
+              <h6 className="text-center">Project Name: {this.state.projectIdentifier}</h6>
               <form onSubmit={this.onSubmit}>
-                <div className="form-group">
+                <div className="form-group my-3">
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg", {
@@ -80,9 +80,8 @@ class AddProjectTask extends Component {
                    {errors.summary && (
                     <div className="invalid-feedback">{errors.summary}</div>
                   )}
-                  <p />
                 </div>
-                <div className="form-group">
+                <div className="form-group  my-3">
                   <textarea
                     className="form-control form-control-lg"
                     placeholder="Acceptance Criteria"
@@ -90,10 +89,9 @@ class AddProjectTask extends Component {
                     value={this.state.acceptanceCriteria}
                     onChange={this.onChange}
                   ></textarea>
-                  <p />
                 </div>
                 <h6>Due Date</h6>
-                <div className="form-group">
+                <div className="form-group  my-3">
                   <input
                     type="date"
                     className="form-control form-control-lg"
@@ -101,9 +99,8 @@ class AddProjectTask extends Component {
                     value={this.state.dueDate}
                     onChange={this.onChange}
                   />
-                  <p />
                 </div>
-                <div className="form-group">
+                <div className="form-group  my-3">
                   <select
                     className="form-control form-control-lg"
                     name="priority"
@@ -115,10 +112,9 @@ class AddProjectTask extends Component {
                     <option value={2}>Medium</option>
                     <option value={3}>Low</option>
                   </select>
-                  <p />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group my-3">
                   <select
                     className="form-control form-control-lg"
                     name="status"
@@ -130,10 +126,9 @@ class AddProjectTask extends Component {
                     <option value="IN_PROGRESS">IN PROGRESS</option>
                     <option value="DONE">DONE</option>
                   </select>
-                  <p />
                 </div>
 
-                <input type="submit" className="btn btn-primary btn-block mt-4" />
+                <input type="submit" className="btn btn-secondary btn-block mt-4" />
               </form>
             </div>
           </div>

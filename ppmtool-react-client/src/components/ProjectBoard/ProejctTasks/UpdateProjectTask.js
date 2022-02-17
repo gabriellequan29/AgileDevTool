@@ -99,7 +99,7 @@ class UpdateProjectTask extends Component {
             <div className="col-md-8 m-auto">
               <Link
                 to={`/projectBoard/${this.state.projectIdentifier}`}
-                className="btn btn-light"
+                className="btn btn-secondary"
               >
                 Back to Project Board
               </Link>
@@ -109,7 +109,7 @@ class UpdateProjectTask extends Component {
                 {this.state.projectSequence}{" "}
               </p>
               <form onSubmit={this.onSubmit}>
-                <div className="form-group">
+                <div className="form-group my-3">
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg", {
@@ -124,7 +124,7 @@ class UpdateProjectTask extends Component {
                 {errors.summary && (
                   <div className="invalid-feedback">{errors.summary}</div>
                 )}
-                <div className="form-group">
+                <div className="form-group my-3">
                   <textarea
                     className="form-control form-control-lg"
                     placeholder="Acceptance Criteria"
@@ -134,7 +134,7 @@ class UpdateProjectTask extends Component {
                   />
                 </div>
                 <h6>Due Date</h6>
-                <div className="form-group">
+                <div className="form-group my-3">
                   <input
                     type="date"
                     className="form-control form-control-lg"
@@ -143,7 +143,8 @@ class UpdateProjectTask extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <div className="form-group">
+                
+                <div className="form-group my-3">
                   <select
                     className="form-control form-control-lg"
                     name="priority"
@@ -157,9 +158,9 @@ class UpdateProjectTask extends Component {
                   </select>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group my-3">
                   <select
-                    className="form-control form-control-lg"
+                    className="form-control form-control-lg my-3"
                     name="status"
                     value={this.state.status}
                     onChange={this.onChange}
@@ -173,7 +174,7 @@ class UpdateProjectTask extends Component {
 
                 <input
                   type="submit"
-                  className="btn btn-primary btn-block mt-4"
+                  className="btn btn-secondary btn-block mt-4"
                 />
               </form>
             </div>

@@ -39,6 +39,12 @@ class ProjectBoard extends Component {
               {errors.projectNotFound}
             </div>
           );
+        } else if (errors.projectIdentifier) {
+          return (
+            <div className="alert alert-danger text-center" role="alert">
+              {errors.projectIdentifier}
+            </div>
+          );
         } else {
           return (
             <div className="alert alert-info text-center" role="alert">
@@ -69,12 +75,12 @@ class ProjectBoard extends Component {
 ProjectBoard.propTypes = {
   backlog: PropTypes.object.isRequired,
   getBacklog: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   backlog: state.backlog,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { getBacklog })(ProjectBoard);
